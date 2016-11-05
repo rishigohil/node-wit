@@ -13,7 +13,7 @@ try {
 
 const accessToken = (() => {
   if (process.argv.length !== 3) {
-    console.log('usage: node examples/quickstart.js <wit-access-token>');
+    console.log('usage: node examples/quickstart.js 6CLKENQHUUBMZNPD52SK7NOGAYCA272Q');
     process.exit(1);
   }
   return process.argv[2];
@@ -54,6 +54,18 @@ const actions = {
         delete context.forecast;
       }
       return resolve(context);
+    });
+  },
+  getAddress({context, entities}) {
+    return new Promise(function(resolve, reject) {
+        context.fullAddress = '4801 Dreher Trail North,' + 'West Palm Beach, FL 33405'; // we should call a weather API here
+        return resolve(context);
+    });
+  },
+  getHelp({context, entities}) {
+    return new Promise(function(resolve, reject) {
+        context.helpText = 'Ask me about:' + 'location or address, ' + 'Hours of operation, ' + 'Driving directions?, ' + 'What is the cost?, ' + 'Offers?'; // we should call a weather API here
+        return resolve(context);
     });
   },
 };

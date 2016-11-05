@@ -126,8 +126,18 @@ const actions = {
       return Promise.resolve()
     }
   },
-  // You should implement your custom actions here
-  // See https://wit.ai/docs/quickstart
+  getAddress({context, entities}) {
+    return new Promise(function(resolve, reject) {
+        context.fullAddress = '4801 Dreher Trail North,' + 'West Palm Beach, FL 33405'; // we should call a weather API here
+        return resolve(context);
+    });
+  },
+  getHelp({context, entities}) {
+    return new Promise(function(resolve, reject) {
+        context.helpText = 'Ask me about:' + 'location or address, ' + 'Hours of operation, ' + 'Driving directions?, ' + 'What is the cost?, ' + 'Offers?'; // we should call a weather API here
+        return resolve(context);
+    });
+  },
 };
 
 // Setting up our bot
